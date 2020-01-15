@@ -44,8 +44,14 @@ def mark(board, player, row, col):
 
 def has_won(board, player):
     """Returns True if player has won the game."""
-    return False
-
+    return True if (board[0][0] == player and board[0][1] == player and board[0][2] == player or
+                    board[1][0] == player and board[1][1] == player and board[1][2] == player or
+                    board[2][0] == player and board[2][1] == player and board[2][2] == player or
+                    board[0][0] == player and board[1][0] == player and board[2][0] == player or
+                    board[0][1] == player and board[1][1] == player and board[2][1] == player or
+                    board[0][2] == player and board[1][2] == player and board[2][2] == player or
+                    board[0][0] == player and board[1][1] == player and board[2][2] == player or
+                    board[0][2] == player and board[1][1] == player and board[2][0] == player) else False
 
 def is_full(board):
     """Returns True if board is full."""
