@@ -62,6 +62,15 @@ def is_full(board):
                 board_is_full = False
     return board_is_full
 
+def is_empty(board):
+    """Returns True if board is empty."""
+    board_is_empty = True
+    for row in board:
+        for col in row:
+            if col != 0:
+                board_is_empty = False
+    return board_is_empty
+
 def print_board(board):
     """Prints a 3-by-3 board on the screen with borders."""
     pass
