@@ -1,3 +1,6 @@
+from random import randint
+
+
 def init_board():
     """Returns an empty 3-by-3 board (with zeros)."""
     board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
@@ -25,11 +28,15 @@ def get_move(board, player):
         row, col = ord(player_input[0]) - 65, int(player_input[1]) - 1
     return row, col
 
-def get_ai_move(board, player):
+def get_ai_move(board):
     """Returns the coordinates of a valid move for player on board."""
-    row, col = 0, 0
-    return row, col
-
+    if is_empty(board):
+        return int(len(board)/2), int(len(board[0])/2)
+    else:
+        row, col = randint(0, len(board[0]) - 1), randint(0, len(board) - 1)
+        while board[row][col] != 0:
+            row, col = randint(0, len(board[0]) - 1), randint(0, len(board) - 1)
+        return row, col
 
 def mark(board, player, row, col):
     """Marks the element at row & col on the board for player."""
