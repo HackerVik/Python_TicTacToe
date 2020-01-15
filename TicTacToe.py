@@ -40,8 +40,7 @@ def get_ai_move(board):
 
 def mark(board, player, row, col):
     """Marks the element at row & col on the board for player."""
-    pass
-
+    board[row][col] = player
 
 def has_won(board, player):
     """Returns True if player has won the game."""
