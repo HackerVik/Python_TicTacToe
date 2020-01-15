@@ -77,7 +77,24 @@ def clear_screen():
 
 def print_board(board):
     """Prints a 3-by-3 board on the screen with borders."""
-    pass
+    clear_screen()
+    row_letter = 65
+    separator = "+"
+    for col in range(len(board[0])):
+        separator += "---+"
+    print("\n    ", end="")
+    for col in range(len(board[0])):
+        print(f"{col + 1}", end="   ")
+    print(f"\n  {separator}")
+    for row in board:
+        print(chr(row_letter) + " | " + str(row)
+              .strip("[]")
+              .replace(",", " |")
+              .replace("0", " ")
+              .replace("1", "X")
+              .replace("2", "O") + " |")
+        print(f"  {separator}")
+        row_letter += 1
 
 
 def print_result(winner):
