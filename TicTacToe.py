@@ -97,10 +97,18 @@ def print_board(board):
         row_letter += 1
 
 
-def print_result(winner):
+def print_result(winner, board):
     """Congratulates winner or proclaims tie (if winner equals zero)."""
-    pass
-
+    print_board(board)
+    winner_sign = "X" if winner == 1 else "O"
+    print("\nGAME OVER!\nIt's a tie!") if winner == 0 else print(
+        f"\nGAME OVER!\nCongratulations!\nThe winner is Player {winner_sign}!")
+    restart = input(">R<estart game: ").upper()
+    if restart == "R":
+        main_menu()
+    else:
+        print("Program is exiting...")
+        quit()
 
 def tictactoe_game(mode='HUMAN-HUMAN'):
     board = init_board()
