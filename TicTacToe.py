@@ -5,9 +5,25 @@ def init_board():
 
 def get_move(board, player):
     """Returns the coordinates of a valid move for player on board."""
-    row, col = 0, 0
+    row_list = [chr(row + 65) for row in range(len(board))]
+    col_list = [str(row + 1) for row in range(len(board))]
+    player_sign = "X" if player == 1 else "O"
+    print("")
+    player_input = input(f"Enter your move Player {player_sign}: ").upper()
+    if player_input == "QUIT":
+        print("Exiting...")
+        quit()
+    while player_input[0] not in row_list \
+            or player_input[1] not in col_list:
+        player_input = input(f"First enter row as {row_list} then enter col as {col_list}: ").upper()
+    row, col = ord(player_input[0]) - 65, int(player_input[1]) - 1
+    while board[row][col] != 0:
+        player_input = input(f"That's already taken!Enter your move Player {player_sign}: ").upper()
+        while player_input[0] not in row_list \
+                or player_input[1] not in col_list:
+            player_input = input(f"First enter row as {row_list} then enter col as {col_list}: ").upper()
+        row, col = ord(player_input[0]) - 65, int(player_input[1]) - 1
     return row, col
-
 
 def get_ai_move(board, player):
     """Returns the coordinates of a valid move for player on board."""
