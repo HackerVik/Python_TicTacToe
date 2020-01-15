@@ -7,6 +7,7 @@ def init_board():
     board = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
     return board
 
+
 def get_move(board, player):
     """Returns the coordinates of a valid move for player on board."""
     row_list = [chr(row + 65) for row in range(len(board))]
@@ -29,19 +30,22 @@ def get_move(board, player):
         row, col = ord(player_input[0]) - 65, int(player_input[1]) - 1
     return row, col
 
+
 def get_ai_move(board):
     """Returns the coordinates of a valid move for player on board."""
     if is_empty(board):
-        return int(len(board)/2), int(len(board[0])/2)
+        return int(len(board) / 2), int(len(board[0]) / 2)
     else:
         row, col = randint(0, len(board[0]) - 1), randint(0, len(board) - 1)
         while board[row][col] != 0:
             row, col = randint(0, len(board[0]) - 1), randint(0, len(board) - 1)
         return row, col
 
+
 def mark(board, player, row, col):
     """Marks the element at row & col on the board for player."""
     board[row][col] = player
+
 
 def has_won(board, player):
     """Returns True if player has won the game."""
@@ -54,6 +58,7 @@ def has_won(board, player):
                     board[0][0] == player and board[1][1] == player and board[2][2] == player or
                     board[0][2] == player and board[1][1] == player and board[2][0] == player) else False
 
+
 def is_full(board):
     """Returns True if board is full."""
     board_is_full = True
@@ -62,6 +67,7 @@ def is_full(board):
             if col == 0:
                 board_is_full = False
     return board_is_full
+
 
 def is_empty(board):
     """Returns True if board is empty."""
@@ -72,8 +78,10 @@ def is_empty(board):
                 board_is_empty = False
     return board_is_empty
 
+
 def clear_screen():
     system('cls' if name == 'nt' else 'clear')
+
 
 def print_board(board):
     """Prints a 3-by-3 board on the screen with borders."""
@@ -109,6 +117,7 @@ def print_result(winner, board):
     else:
         print("Program is exiting...")
         quit()
+
 
 def tictactoe_game(mode):
     if mode == 1:
