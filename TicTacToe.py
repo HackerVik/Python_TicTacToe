@@ -55,8 +55,12 @@ def has_won(board, player):
 
 def is_full(board):
     """Returns True if board is full."""
-    return False
-
+    board_is_full = True
+    for row in board:
+        for col in row:
+            if col == 0:
+                board_is_full = False
+    return board_is_full
 
 def print_board(board):
     """Prints a 3-by-3 board on the screen with borders."""
