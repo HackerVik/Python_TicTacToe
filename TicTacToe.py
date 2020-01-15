@@ -110,16 +110,44 @@ def print_result(winner, board):
         print("Program is exiting...")
         quit()
 
-def tictactoe_game(mode='HUMAN-HUMAN'):
-    board = init_board()
-
-    # use get_move(), mark(), has_won(), is_full(), and print_board() to create game logic
-    print_board(board)
-    row, col = get_move(board, 1)
-    mark(board, 1, row, col)
-
-    winner = 0
-    print_result(winner)
+def tictactoe_game(mode):
+    if mode == 1:
+        player = randint(1, 2)
+        board = init_board()
+        print_board(board)
+        while not is_full(board):
+            player = (1 if player == 2 else 2)
+            row, col = get_move(board, player)
+            mark(board, player, row, col)
+            print_board(board)
+            if has_won(board, player):
+                winner = player
+                print_result(winner, board)
+                quit()
+            if is_full(board):
+                print_result(0, board)
+                quit()
+    else:
+        player = randint(1, 2)
+        board = init_board()
+        print_board(board)
+        while not is_full(board):
+            player = (1 if player == 2 else 2)
+            if player == 1:
+                row, col = get_move(board, player)
+                mark(board, player, row, col)
+                print_board(board)
+            else:
+                row, col = get_ai_move(board)
+                mark(board, player, row, col)
+                print_board(board)
+            if has_won(board, player):
+                winner = player
+                print_result(winner, board)
+                quit()
+            if is_full(board):
+                print_result(0, board)
+                quit()
 
 
 def main_menu():
