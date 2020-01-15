@@ -1,3 +1,4 @@
+from os import system, name
 from random import randint
 
 
@@ -70,6 +71,9 @@ def is_empty(board):
             if col != 0:
                 board_is_empty = False
     return board_is_empty
+
+def clear_screen():
+    system('cls' if name == 'nt' else 'clear')
 
 def print_board(board):
     """Prints a 3-by-3 board on the screen with borders."""
