@@ -151,7 +151,16 @@ def tictactoe_game(mode):
 
 
 def main_menu():
-    tictactoe_game('HUMAN-HUMAN')
+    clear_screen()
+    print("\nWelcome to tic-tac-toe!\n\n1) HUMAN to HUMAN\n2) HUMAN to AI\n3) Quit")
+    game_mode = input("\nChoose a mode: ")
+    if game_mode in ['1', '2']:
+        tictactoe_game(1) if game_mode == '1' else tictactoe_game(2)
+    if game_mode == '3':
+        print("Exiting...")
+        quit()
+    else:
+        main_menu()
 
 
 if __name__ == '__main__':
